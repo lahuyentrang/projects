@@ -1,33 +1,4 @@
-<?php
-session_start();
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-		// connect db
-	include('includes/connect_db.php');
-
-		// check exist
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-
-	$sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
-	$result = $conn->query($sql);
-		// if ($result) {
-		// 		// success = do st here
-		// }
-
-		$user = $result->fetch(); // fetchAll();
-		if ($user) {
-			// $session
-			$_SESSION['user'] = $user;
-
-			// redirect
-			header('Location: index.php');
-		}
-
-		// $error
-		$error = 'Incorrect username or password!';
-	}
-	?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 	<html xmlns="http://www.w3.org/1999/xhtml">
